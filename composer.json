@@ -1,0 +1,18 @@
+{
+    "name": "socialiteproviders/blizzard",
+    "description": "Blizzard OAuth2 Provider for Laravel Socialite",
+    "license": "MIT",
+    "authors": [{
+        "name": "Alexandre Breteau",
+        "email": "contact@seldszar.fr"
+    }],
+    "require": {
+        "php": ">=5.5.9",
+        "socialiteproviders/manager": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "SocialiteProviders\\Blizzard\\": "src/"
+        }
+    }
+}
