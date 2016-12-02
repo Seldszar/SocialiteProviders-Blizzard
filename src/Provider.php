@@ -21,6 +21,11 @@ class Provider extends AbstractProvider implements ProviderInterface
     /**
      * {@inheritdoc}
      */
+    protected $scopeSeparator = '+';
+
+    /**
+     * {@inheritdoc}
+     */
     protected function getAuthUrl($state)
     {
         return $this->buildAuthUrlFromBase('https://'.$this->getHost().'/oauth/authorize', $state);
@@ -31,7 +36,7 @@ class Provider extends AbstractProvider implements ProviderInterface
      */
     protected function getTokenUrl()
     {
-        return $this->getHost().'/oauth/token';
+        return 'https://'.$this->getHost().'/oauth/token';
     }
 
     /**
