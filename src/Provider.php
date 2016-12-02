@@ -23,7 +23,7 @@ class Provider extends AbstractProvider implements ProviderInterface
      */
     protected function getAuthUrl($state)
     {
-        return $this->buildAuthUrlFromBase($this->getHost().'/oauth/authorize', $state);
+        return $this->buildAuthUrlFromBase('https://'.$this->getHost().'/oauth/authorize', $state);
     }
 
     /**
@@ -39,7 +39,7 @@ class Provider extends AbstractProvider implements ProviderInterface
      */
     protected function getUserByToken($token)
     {
-        $response = $this->getHttpClient()->get($this->getMasheryHost().'/account/user', [
+        $response = $this->getHttpClient()->get('https://'.$this->getMasheryHost().'/account/user', [
             'headers' => [
                 'Authorization' => 'Bearer '.$token,
             ],
@@ -72,6 +72,14 @@ class Provider extends AbstractProvider implements ProviderInterface
         return array_merge(parent::getTokenFields($code), [
             'grant_type' => 'authorization_code'
         ]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function additionalConfigKeys()
+    {
+        return ['region'];
     }
 
     /**
